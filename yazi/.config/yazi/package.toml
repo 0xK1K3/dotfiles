@@ -12,3 +12,8 @@ hash = "3996fc74044bc44144b323686f887e1"
 use = "Chromium-3-Oxide/everforest-medium"
 rev = "0158f0f"
 hash = "dbbbfe681e156c28303efb1f44b6cbc4"
+
+[[flavor.deps]]
+use = "ficcdaf/ashen:ashen"
+rev = "9b8dd6a"
+hash = "a48aa4d7140c52cdd14552039b632800"

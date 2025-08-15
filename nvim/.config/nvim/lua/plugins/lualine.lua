@@ -3,7 +3,7 @@ return {
 	config = function()
 		local lazy_status = require("lazy.status")
 		require("lualine").setup({
-			theme = "everforest",
+			theme = "horizon",
 			sections = {
 				lualine_c = {
 					{ "filename", path = 1 },

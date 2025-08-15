@@ -50,7 +50,6 @@ return {
 					toggle_debug = "<F2>",
 				},
 
-				-- Highlight groups (matching your everforest theme)
 				hl = {
 					border = "FloatBorder",
 					normal = "Normal",

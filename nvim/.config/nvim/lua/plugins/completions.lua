@@ -27,11 +27,13 @@ return {
 			window = {
 				completion = cmp.config.window.bordered({
 					border = "rounded",
-					winhighlight = "Normal:Pmenu,FloatBoder:Pmenu,CursorLine:PmenuSel,Search:None",
+					winhighlight = "Normal:Normal,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+					col_offset = -3,
+					side_padding = 0,
 				}),
 				documentation = cmp.config.window.bordered({
 					border = "rounded",
-					winhighlight = "Normal:Pmenu",
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
 				}),
 			},
 

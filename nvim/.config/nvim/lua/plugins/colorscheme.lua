@@ -1,10 +1,13 @@
 return {
-  "neanias/everforest-nvim",
-	lazy = false,
-	priority = 1000,
-	config = function()
-    require('everforest').setup({
-    })
-		vim.cmd('colorscheme everforest')
-	end
+	{
+		"gthelding/monokai-pro.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("monokai-pro").setup({
+				filter = "ristretto",
+			})
+			vim.cmd("colorscheme monokai-pro")
+		end,
+	},
 }
