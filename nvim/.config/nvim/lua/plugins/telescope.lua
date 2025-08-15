@@ -5,10 +5,13 @@ return {
 		local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
 
-		vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Telescope find files" })
-		vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "Telescope live grep" })
-		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+		vim.keymap.set("n", "<leader><leader>", builtin.live_grep, { desc = "Live Grep" })
+		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
+		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help Tags" })
+		vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Commands" })
+		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Keymaps" })
+		vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Recent Files" })
+		vim.keymap.set("n", "<leader>fs", builtin.git_status, { desc = "Git Status" })
 
 		telescope.setup({
 			defaults = {
@@ -16,7 +19,6 @@ return {
 			},
 		})
 
-		-- You still load extensions after setup
 		telescope.load_extension("ui-select")
 	end,
 }
