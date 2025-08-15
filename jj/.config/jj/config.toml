@@ -1,0 +1,12 @@
+editor = "nvim"
+
+[user]
+email = "enriquemartin1402@gmail.com"
+name = "johnny"
+
+[aliases]
+b = ["branch"]
+n = ["new"]
+
+[ui]
+default-command = "log"
