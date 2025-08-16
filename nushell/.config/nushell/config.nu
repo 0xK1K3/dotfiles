@@ -21,7 +21,11 @@ $env.config = {
 $env.TRANSIENT_PROMPT_COMMAND = null
 $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
 
-# Aliases
+# Source external configuration files
+
+source ~/.config/nushell/alias.nu
+
+source ~/.zoxide.nu
 
 # Startup programs
 

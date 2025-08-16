@@ -16,3 +16,6 @@
 #
 # You can remove these comments if you want or leave
 # them for future reference.
+
+# Initialize zoxide
+zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
