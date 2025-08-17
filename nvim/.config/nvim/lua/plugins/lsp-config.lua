@@ -1,7 +1,36 @@
 return {
 	"neovim/nvim-lspconfig",
 
-	config = function()
+	dependencies = {
+		"saghen/blink.cmp",
+	},
+
+	opts = {
+		servers = {
+			nil_ls = {},
+			hyprls = {},
+			marksman = {},
+			docker_compose_language_service = {},
+			dockerls = {},
+			html = {},
+			cssls = {},
+			jsonls = {},
+			eslint = {},
+			vtsls = {},
+			pyright = {},
+			ruff = {},
+			biome = {},
+			emmet_ls = {},
+			gopls = {},
+			rust_analyzer = {},
+			yamlls = {},
+			tailwindcss = {},
+			lua_ls = {},
+		},
+	},
+
+	config = function(_, opts)
+		local lspconfig = require("lspconfig")
 		-- Lsp global configurations
 		vim.diagnostic.config({
 			underline = true,
@@ -71,48 +100,9 @@ return {
 			end,
 		})
 
-		-- The actual list of servers
-		local servers = {
-			"nil_ls",
-			"hyprls",
-			"marksman",
-			"docker_compose_language_service",
-			"dockerls",
-			"html",
-			"cssls",
-			"jsonls",
-			"eslint",
-			"vtsls",
-			"pyright",
-			"ruff",
-			"biome",
-			"emmet_ls",
-			"gopls",
-			"rust_analyzer",
-			"yamlls",
-			"tailwindcss",
-			"lua_ls",
-		}
-
-		-- Just enable the servers. The autocmd will handle the rest.
-		for _, server_name in ipairs(servers) do
-			vim.lsp.enable(server_name)
+		for server, config in pairs(opts.servers) do
+			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+			lspconfig[server].setup(config)
 		end
-
-		vim.lsp.config("pyright", {
-			-- Disable pyright's formatting provider in favor of conform.nvim
-			on_init = function(client)
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end,
-		})
-
-		vim.lsp.config("vtsls", {
-			-- Disable vtsls's formatting provider in favor of conform.nvim
-			on_init = function(client)
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end,
-		})
 	end,
 }

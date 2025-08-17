@@ -1,92 +1,61 @@
 return {
-	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
-	dependencies = {
-		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
-		"saadparwaiz1/cmp_luasnip",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"onsails/lspkind.nvim",
+	"saghen/blink.cmp",
+	dependencies = { "rafamadriz/friendly-snippets" },
+
+	-- use a release tag to download pre-built binaries
+	version = "1.*",
+	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+	-- build = 'cargo build --release',
+	-- If you use nix, you can build from source using latest nightly rust with:
+	-- build = 'nix run .#build-plugin',
+
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
+	opts = {
+		-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+		-- 'super-tab' for mappings similar to vscode (tab to accept)
+		-- 'enter' for enter to accept
+		-- 'none' for no mappings
+		--
+		-- All presets have the following mappings:
+		-- C-space: Open menu or open docs if already open
+		-- C-n/C-p or Up/Down: Select next/previous item
+		-- C-e: Hide menu
+		-- C-k: Toggle signature help (if signature.enabled = true)
+		--
+		-- See :h blink-cmp-config-keymap for defining your own keymap
+		keymap = { preset = "default", ["<Enter>"] = { "accept", "fallback" } },
+
+		appearance = {
+			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+			-- Adjusts spacing to ensure icons are aligned
+			nerd_font_variant = "mono",
+		},
+
+		-- (Default) Only show the documentation popup when manually triggered
+		completion = {
+			documentation = { auto_show = true, window = { border = "rounded" } },
+			menu = {
+				border = "rounded",
+			},
+			ghost_text = {
+				enabled = true,
+			},
+		},
+		signature = { enabled = true },
+
+		-- Default list of enabled providers defined so that you can extend it
+		-- elsewhere in your config, without redefining it, due to `opts_extend`
+		sources = {
+			default = { "lsp", "path", "snippets" },
+		},
+
+		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+		--
+		-- See the fuzzy documentation for more information
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
-	config = function()
-		local cmp = require("cmp")
-		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-		local luasnip = require("luasnip")
-		local lspkind = require("lspkind")
-		local defaults = require("cmp.config.default")()
-
-		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-		cmp.setup({
-			snippet = {
-				expand = function(args)
-					luasnip.lsp_expand(args.body)
-				end,
-			},
-			window = {
-				completion = cmp.config.window.bordered({
-					border = "rounded",
-					winhighlight = "Normal:Normal,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
-					col_offset = -3,
-					side_padding = 0,
-				}),
-				documentation = cmp.config.window.bordered({
-					border = "rounded",
-					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
-				}),
-			},
-
-			formatting = {
-				format = lspkind.cmp_format({
-					mode = "symbol_text", -- show only symbol annotations
-					maxwidth = 50, -- prevent the popup from showing more than provided characters
-					ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
-					show_labelDetails = true, -- show labelDetails in menu
-
-					-- Custom formatting function
-					before = function(entry, vim_item)
-						-- Source names for different completion sources
-						local source_names = {
-							nvim_lsp = "[LSP]",
-							luasnip = "[Snippet]",
-							buffer = "[Buffer]",
-							path = "[Path]",
-						}
-
-						-- Add source name
-						vim_item.menu = source_names[entry.source.name] or "[" .. entry.source.name .. "]"
-
-						-- Customize appearance for different sources
-						if entry.source.name == "nvim_lsp" then
-							vim_item.dup = 0 -- Don't show duplicates for LSP
-						end
-
-						return vim_item
-					end,
-				}),
-			},
-
-			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping.select_prev_item(),
-				["<C-n>"] = cmp.mapping.select_next_item(),
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
-			}),
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "path" },
-				{ name = "luasnip" },
-			}),
-			sorting = defaults.sorting,
-			performance = {
-				debounce = 60,
-				throttle = 30,
-				fetching_timeout = 500,
-			},
-		})
-	end,
+	opts_extend = { "sources.default" },
 }
