@@ -24,7 +24,7 @@ vim.opt.showmode = false
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "» ", trail = "·", space = "·", nbsp = "␣" }
 
 -- Split window settings
 vim.opt.splitright = true
@@ -41,3 +41,15 @@ vim.opt.smartcase = true
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 vim.fn.mkdir(vim.o.undodir, "p")
+
+-- Highlight text after yanking
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("YankHighlight", {
+		clear = true,
+	}),
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	desc = "Highlight yank",
+})
