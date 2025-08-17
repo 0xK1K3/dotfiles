@@ -16,13 +16,17 @@ return {
 				ui_enabled = true,
 
 				-- Window dimensions
-				width = 0.8,
-				height = 0.8,
+				layout = {
+					width = 0.8,
+					height = 0.8,
+					preview = {
+						width = 0.5,
+					},
+				},
 
 				-- Preview configuration
 				preview = {
 					enabled = true,
-					width = 0.5,
 					max_lines = 5000,
 					max_size = 10 * 1024 * 1024, -- 10MB
 					line_numbers = false,
