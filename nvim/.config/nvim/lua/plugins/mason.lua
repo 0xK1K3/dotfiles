@@ -28,6 +28,8 @@ return {
 					"tailwindcss",
 					"lua_ls",
 					"vtsls",
+					"ruff",
+					"hyprls",
 				},
 				auto_update = true,
 				automatic_installation = true,

@@ -17,15 +17,49 @@ return {
 			jsonls = {},
 			eslint = {},
 			vtsls = {},
-			pyright = {},
-			ruff = {},
+			pyright = {
+				settings = {
+					python = {
+						analysis = {
+							autoImportCompletions = true,
+							typeCheckingMode = "standard",
+						},
+					},
+				},
+			},
+			ruff = {
+				init_options = {
+					settings = {
+						args = {},
+					},
+				},
+			},
 			biome = {},
 			emmet_ls = {},
-			gopls = {},
 			rust_analyzer = {},
 			yamlls = {},
 			tailwindcss = {},
-			lua_ls = {},
+			lua_ls = {
+				settings = {
+					Lua = {
+						runtime = {
+							-- Tell the language server which version of Lua you're using
+							version = "LuaJIT",
+						},
+						diagnostics = {
+							-- Get the language server to recognize the `vim` global
+							globals = { "vim" },
+						},
+						workspace = {
+							-- Make the server aware of Neovim runtime files
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						telemetry = {
+							enable = false,
+						},
+					},
+				},
+			},
 		},
 	},
 
@@ -100,8 +134,10 @@ return {
 			end,
 		})
 
+		local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+		local blink_capabilities = require("blink.cmp").get_lsp_capabilities(default_capabilities)
 		for server, config in pairs(opts.servers) do
-			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+			config.capabilities = vim.tbl_deep_extend("force", blink_capabilities, config.capabilities or {})
 			lspconfig[server].setup(config)
 		end
 	end,
