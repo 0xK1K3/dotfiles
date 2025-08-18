@@ -2,13 +2,17 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
+-- Page Scrolling
+keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
+keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down" })
+
 -- Oil.nvim
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 keymap.set("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open Oil at current dir" })
 keymap.set("n", "<leader>E", "<cmd>Oil .<CR>", { desc = "Open Oil at root dir" })
 
 -- Formatting
-vim.keymap.set({ "n", "v" }, "<leader>bf", function()
+keymap.set({ "n", "v" }, "<leader>bf", function()
 	require("conform").format({ async = true })
 end, { desc = "Format buffer" })
 
