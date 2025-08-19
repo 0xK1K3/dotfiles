@@ -30,6 +30,7 @@ return {
 					"vtsls",
 					"ruff",
 					"hyprls",
+					"bashls",
 				},
 				auto_update = true,
 				automatic_installation = true,
@@ -47,6 +48,8 @@ return {
 					"ruff",
 					"prettier",
 					"nixpkgs-fmt",
+					"shfmt",
+					"shellcheck",
 
 					-- DAPs, linters, etc.
 					-- Add more tools as needed
