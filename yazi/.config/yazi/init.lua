@@ -32,5 +32,5 @@ require("copy-file-contents"):setup({
 
 -- Full-border line (Use "ya pkg add yazi-rs/plugins:full-border")
 require("full-border"):setup({
-	type = ui.Border.ROUNDED,
+	type = ui.Border.PLAIN,
 })
