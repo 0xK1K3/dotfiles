@@ -10,7 +10,7 @@ include "%L"
 <Multi_key> <m> <n> : "👎" # no
 <Multi_key> <m> <f> : "🖕" # fuck
 <Multi_key> <m> <w> : "🤞" # wish
-<Multi_key> <m> <r> : "🤘" # rock
+<Multi_key> <m> <r> : "☠️" # skull
 <Multi_key> <m> <k> : "😘" # kiss
 <Multi_key> <m> <e> : "🙄" # eyeroll
 <Multi_key> <m> <d> : "🤤" # droll
