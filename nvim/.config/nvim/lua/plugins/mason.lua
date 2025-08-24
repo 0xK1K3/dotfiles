@@ -1,6 +1,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		cmd = "Mason",
 		config = function()
 			require("mason").setup()
 		end,
@@ -8,6 +9,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "mason.nvim" },
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
@@ -39,6 +41,7 @@ return {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		cmd = { "MasonToolsInstall", "MasonToolsUpdate" },
 		dependencies = { "mason.nvim" },
 		config = function()
 			require("mason-tool-installer").setup({
@@ -54,8 +57,8 @@ return {
 					-- DAPs, linters, etc.
 					-- Add more tools as needed
 				},
-				auto_update = true,
-				run_on_start = true,
+				auto_update = false,
+				run_on_start = false,
 			})
 		end,
 	},
