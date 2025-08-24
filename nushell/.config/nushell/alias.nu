@@ -1,5 +1,6 @@
 # Fzf aliases
 alias pfzf = fzf --preview="bat --color=always {}"
+alias cat = bat
 def nfzf [] {
     try {
         let selected_file = (fzf --preview="bat --color=always {}" | str trim)
