@@ -1,4 +1,5 @@
 [mgr]
 prepend_keymap = [
     { on = [ "<A-y>" ], run = "plugin copy-file-contents", desc = "Copy file contents" },
+    { on = [ "<C-n>" ], run = 'shell -- dragon-drop -x -i -T "$1"', desc = "Drag and drop" },
 ]
