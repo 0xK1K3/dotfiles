@@ -8,7 +8,7 @@ font-size = 14
 window-padding-x = 14
 window-padding-y = 14
 window-decoration = false
-background-opacity = 0.98
+background-opacity = 0.7
 
 # Terminal settings
 term = xterm-256color
