@@ -35,7 +35,6 @@ return {
 					},
 				},
 			},
-			biome = {},
 			emmet_ls = {},
 			rust_analyzer = {},
 			yamlls = {},

@@ -23,7 +23,6 @@ return {
 					"jsonls",
 					"eslint",
 					"pyright",
-					"biome",
 					"emmet_ls",
 					"rust_analyzer",
 					"yamlls",
