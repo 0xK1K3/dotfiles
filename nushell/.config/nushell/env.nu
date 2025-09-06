@@ -19,3 +19,8 @@
 
 # Initialize zoxide
 zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
+
+# pnpm
+$env.PNPM_HOME = "/home/0xK1K3/.local/share/pnpm"
+$env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
+# pnpm end
