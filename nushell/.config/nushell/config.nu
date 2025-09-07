@@ -25,7 +25,6 @@ $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
 
 source ~/.config/nushell/alias.nu
 source ~/.config/nushell/completions-jj.nu
-source ~/.config/nushell/private.nu
 source ~/.zoxide.nu
 
 # Startup programs

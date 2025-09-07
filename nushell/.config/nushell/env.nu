@@ -24,6 +24,3 @@ zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
 $env.PNPM_HOME = "/home/0xK1K3/.local/share/pnpm"
 $env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
 # pnpm end
-
-# Use glm-4.5 in claude code
-$env.ANTHROPIC_BASE_URL = "https://api.z.ai/api/anthropic"
