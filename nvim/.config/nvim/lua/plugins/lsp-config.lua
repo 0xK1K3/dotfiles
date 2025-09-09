@@ -17,7 +17,9 @@ return {
 			cssls = {},
 			jsonls = {},
 			eslint = {},
-			vtsls = {},
+			vtsls = {
+				single_file_support = false,
+			},
 			pyright = {
 				settings = {
 					python = {
