@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
+keymap.set("n", "<ESC>", "<cmd>noh<CR>", { desc = "Clear search patter" })
 -- Page Scrolling
 keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
 keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down" })
