@@ -34,7 +34,7 @@ return {
 					"bashls",
 				},
 				auto_update = true,
-				automatic_installation = true,
+				automatic_installation = false,
 			})
 		end,
 	},
