@@ -66,7 +66,7 @@ return {
 	},
 
 	config = function(_, opts)
-		local lspconfig = require("lspconfig")
+		local lspconfig = vim.lsp.config
 		-- Lsp global configurations
 		vim.diagnostic.config({
 			underline = true,
@@ -140,7 +140,7 @@ return {
 		local blink_capabilities = require("blink.cmp").get_lsp_capabilities(default_capabilities)
 		for server, config in pairs(opts.servers) do
 			config.capabilities = vim.tbl_deep_extend("force", blink_capabilities, config.capabilities or {})
-			lspconfig[server].setup(config)
+			vim.lsp.config(server, config)
 		end
 	end,
 }
