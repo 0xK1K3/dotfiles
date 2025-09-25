@@ -8,7 +8,6 @@ return {
 
 	opts = {
 		servers = {
-			nil_ls = {},
 			hyprls = {},
 			marksman = {},
 			docker_compose_language_service = {},
