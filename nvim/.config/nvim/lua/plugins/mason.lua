@@ -14,7 +14,6 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					-- LSPs (use mason-lspconfig names)
-					"nil_ls",
 					"marksman",
 					"docker_compose_language_service",
 					"dockerls",
@@ -32,6 +31,7 @@ return {
 					"ruff",
 					"hyprls",
 					"bashls",
+					"astro",
 				},
 				auto_update = true,
 				automatic_installation = false,

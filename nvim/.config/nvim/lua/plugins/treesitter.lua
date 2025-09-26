@@ -31,6 +31,7 @@ return {
 					"vimdoc",
 					"xml",
 					"yaml",
+					"astro",
 				},
 				auto_install = true,
 				sync_install = false,

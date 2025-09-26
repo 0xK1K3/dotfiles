@@ -16,6 +16,7 @@ return {
 			cssls = {},
 			jsonls = {},
 			eslint = {},
+			astro = {},
 			vtsls = {
 				single_file_support = false,
 			},
