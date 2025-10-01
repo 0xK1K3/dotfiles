@@ -4,5 +4,6 @@
 
 local keymap = vim.keymap
 
+-- Page navigation
 keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
 keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down" })
