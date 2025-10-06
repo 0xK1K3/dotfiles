@@ -2,7 +2,7 @@ command = /usr/bin/nu
 
 # Font configuration
 font-family = CaskaydiaMono Nerd Font
-font-size = 14
+font-size = 16
 
 # Window settings
 window-padding-x = 14
