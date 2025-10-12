@@ -1,14 +1,15 @@
 return {
   {
-    "gthelding/monokai-pro.nvim",
+    "ribru17/bamboo.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("monokai-pro").setup({
-        transparent_background = true,
-        filter = "ristretto",
+      require("bamboo").setup({
+        style = "vulgaris",
+        transparent = true,
+        dim_inactive = true,
       })
-      vim.cmd("colorscheme monokai-pro")
+      require("bamboo").load()
     end,
   },
 }

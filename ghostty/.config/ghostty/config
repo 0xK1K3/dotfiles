@@ -16,30 +16,28 @@ term = xterm-256color
 # Keybindings
 keybind = f11=toggle_fullscreen
 
-# Ristretto color scheme
-background = 2c2525
-foreground = e6d9db
+# primary
+background = #111c18
+foreground = #C1C497
+cursor-color = #D7C995
+cursor-text = #000000
 
-# Normal colors (palette 0-7)
-palette = 0=#2c2525
-palette = 1=#fd6883
-palette = 2=#adda78
-palette = 3=#f9cc6c
-palette = 4=#f38d70
-palette = 5=#a8a9eb
-palette = 6=#85dacc
-palette = 7=#e6d9db
+# normal colors
+palette = 0=#23372B
+palette = 1=#FF5345
+palette = 2=#549e6a
+palette = 3=#459451
+palette = 4=#509475
+palette = 5=#D2689C
+palette = 6=#2DD5B7
+palette = 7=#F6F5DD
 
-# Bright colors (palette 8-15)
-palette = 8=#463a3a
-palette = 9=#ff8297
-palette = 10=#c8e292
-palette = 11=#fcd675
-palette = 12=#f8a788
-palette = 13=#bebffd
-palette = 14=#9bf1e1
-palette = 15=#f1e5e7
-
-# Selection color
-selection-background = 403e41
-keybind = shift+enter=text:\n
+# bright colors
+palette = 8=#53685B
+palette = 9=#db9f9c
+palette = 10=#143614
+palette = 11=#E5C736
+palette = 12=#ACD4CF
+palette = 13=#75bbb3
+palette = 14=#8CD3CB
+palette = 15=#9eebb3
