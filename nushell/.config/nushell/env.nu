@@ -21,6 +21,13 @@
 zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
 
 # pnpm
-$env.PNPM_HOME = "/home/0xK1K3/.local/share/pnpm"
+$env.PNPM_HOME = "/home/k1k3/.local/share/pnpm"
 $env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
 # pnpm end
+
+# Add ~/.local/bin to PATH for uv and other local binaries
+$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.local/bin" )
+
+# ROCm
+$env.ROCM_PATH = "/opt/rocm"
+$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.ROCM_PATH)/bin" )

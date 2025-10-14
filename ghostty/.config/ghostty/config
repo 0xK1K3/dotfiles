@@ -10,6 +10,7 @@ window-padding-y = 14
 confirm-close-surface = false
 resize-overlay = never
 background-opacity = 0.8
+clipboard-paste-protection = false
 
 # Keybindings
 keybind = f11=toggle_fullscreen
