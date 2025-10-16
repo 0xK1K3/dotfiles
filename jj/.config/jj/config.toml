@@ -2,7 +2,7 @@ editor = "nvim"
 
 [user]
 email = "enriquemartin1402@gmail.com"
-name = "0xK1K3"
+name = "k1k3"
 
 [aliases]
 b = ["branch"]
