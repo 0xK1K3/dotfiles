@@ -1,0 +1,16 @@
+[user]
+	name = k1k3
+	email = enriquemartin1402@gmail.com
+[core]
+	editor = nvim
+  autocrlf = input
+[color]
+	ui = auto
+[pull]
+	rebase = true
+[push]
+  default = simple
+[init]
+  defaultBranch = master
+[log]
+  date = relative
