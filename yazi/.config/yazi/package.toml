@@ -17,3 +17,8 @@ hash = "dbbbfe681e156c28303efb1f44b6cbc4"
 use = "ficcdaf/ashen:ashen"
 rev = "9b8dd6a"
 hash = "a48aa4d7140c52cdd14552039b632800"
+
+[[flavor.deps]]
+use = "BennyOe/tokyo-night"
+rev = "5f56364"
+hash = "c0bf69ad2c44005892d586e9693993c6"
