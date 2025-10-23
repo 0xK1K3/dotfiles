@@ -14,3 +14,5 @@
   defaultBranch = master
 [log]
   date = relative
+[rerere]
+	enabled = true
