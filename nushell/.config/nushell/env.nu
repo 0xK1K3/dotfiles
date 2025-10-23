@@ -31,3 +31,8 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.local/bi
 # ROCm
 $env.ROCM_PATH = "/opt/rocm"
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.ROCM_PATH)/bin" )
+
+# Z.AI API Key for MCP servers
+if ("~/.config/nushell/secrets.nu" | path exists) {
+    source ~/.config/nushell/secrets.nu
+}
