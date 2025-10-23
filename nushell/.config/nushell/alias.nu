@@ -1,7 +1,7 @@
 # Fzf aliases
 alias pfzf = fzf --preview="bat --color=always {}"
 alias cat = bat
-alias "git log" = git log --graph --pretty=format:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --all
+alias "git log" = git log --graph --pretty=format:'%C(yellow)%h (%Creset%Cgreen%p%Creset%C(yellow))%Creset -%Cred%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --all
 def nfzf [] {
     try {
         let selected_file = (fzf --preview="bat --color=always {}" | str trim)
