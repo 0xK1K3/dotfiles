@@ -24,4 +24,3 @@ keybind = control+insert=copy_to_clipboard
 
 # Quality of Life
 clipboard-paste-protection = false
-keybind = shift+enter=text:\x1b\r
