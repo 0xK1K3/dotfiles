@@ -19,4 +19,9 @@
       },
     },
   },
+  "permission": {
+    "edit": "ask",
+    "bash": "ask",
+    "webfetch": "allow",
+  },
 }
