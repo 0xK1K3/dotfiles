@@ -23,10 +23,6 @@
         "Authorization": "Bearer {env:Z_AI_API_KEY}",
       },
     },
-    "convex-mcp": {
-      "type": "local",
-      "command": ["npx", "-y", "@convex/latest", "mcp", "start"],
-    },
     "stripe-mcp-server": {
       "type": "local",
       "command": ["npx", "-y", "@stripe/mcp", "--tools=all"],
