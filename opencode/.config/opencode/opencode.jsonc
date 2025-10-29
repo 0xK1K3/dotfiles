@@ -2,6 +2,10 @@
   "$schema": "https://opencode.ai/config.json",
   "theme": "tokyonight",
   "autoupdate": true,
+  "keybinds": {
+    "input_newline": "enter",
+    "input_submit": "ctrl+a",
+  },
   "permission": {
     "edit": "ask",
     "bash": "ask",
