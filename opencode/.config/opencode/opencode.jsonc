@@ -9,15 +9,13 @@
   },
   "provider": {
     "minimax": {
-      "id": "minimax",
       "npm": "@ai-sdk/anthropic",
-      "name": "MiniMax",
       "options": {
         "baseURL": "https://api.minimax.io/anthropic/v1",
       },
       "models": {
         "MiniMax-M2": {
-          "name": "MiniMax M2 (Free)",
+          "name": "MiniMax-M2",
         },
       },
     },
