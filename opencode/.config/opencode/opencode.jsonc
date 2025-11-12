@@ -7,6 +7,9 @@
     "bash": "ask",
     "webfetch": "allow",
   },
+  "keybinds": {
+    "input_newline": "ctrl+n",
+  },
   "provider": {
     "minimax": {
       "npm": "@ai-sdk/anthropic",
