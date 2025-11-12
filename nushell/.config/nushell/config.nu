@@ -1,7 +1,6 @@
 # Nushell configuration file
 
-# Settings
-
+# Prompt Settings
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
 
@@ -10,25 +9,158 @@ $env.PROMPT_COMMAND_RIGHT = ""
 $env.PROMPT_MULTILINE_INDICATOR = ""
 $env.PROMPT_COMMAND = ""
 
-$env.config = {
-	show_banner: false
-	buffer_editor: "nvim"
-	highlight_resolved_externals: true
+# History configuration
+$env.config.history.file_format = "sqlite"
+$env.config.history.isolation = false
+$env.config.history.max_size = 10_000_000
+$env.config.history.sync_on_enter = true
+
+$env.config.show_banner = false
+$env.config.edit_mode = "vi"
+$env.config.rm.always_trash = false
+$env.config.recursion_limit = 100
+
+# Completion settings
+$env.config.completions.algorithm = "substring"
+$env.config.completions.sort = "smart"
+$env.config.completions.case_sensitive = false
+$env.config.completions.quick = true
+$env.config.completions.partial = true
+$env.config.completions.use_ls_colors = true
+
+# Shell integration
+$env.config.use_kitty_protocol = true
+
+$env.config.shell_integration.osc2 = true
+$env.config.shell_integration.osc7 = true
+$env.config.shell_integration.osc8 = true
+$env.config.shell_integration.osc9_9 = false
+$env.config.shell_integration.osc133 = true
+$env.config.shell_integration.osc633 = true
+$env.config.shell_integration.reset_application_mode = true
+
+$env.config.bracketed_paste = true
+
+# Additional shell features
+$env.config.use_ansi_coloring = "auto"
+$env.config.highlight_resolved_externals = true
+
+$env.config.error_style = "fancy"
+$env.config.display_errors.exit_code = false
+$env.config.display_errors.termination_signal = true
+
+# Footer mode
+$env.config.footer_mode = 25
+
+# Table display settings
+$env.config.table.mode = "single"
+$env.config.table.index_mode = "always"
+$env.config.table.show_empty = true
+$env.config.table.padding.left = 1
+$env.config.table.padding.right = 1
+$env.config.table.trim.methodology = "wrapping"
+$env.config.table.trim.wrapping_try_keep_words = true
+$env.config.table.trim.truncating_suffix =  "..."
+$env.config.table.header_on_separator = true
+$env.config.table.abbreviated_row_count = null
+$env.config.table.footer_inheritance = true
+$env.config.table.missing_value_symbol = $"(ansi magenta_bold)nope(ansi reset)"
+
+# DateTime formatting
+$env.config.datetime_format.table = null
+$env.config.datetime_format.normal = $"(ansi blue_bold)%Y(ansi reset)(ansi yellow)-(ansi blue_bold)%m(ansi reset)(ansi yellow)-(ansi blue_bold)%d(ansi reset)(ansi black)T(ansi magenta_bold)%H(ansi reset)(ansi yellow):(ansi magenta_bold)%M(ansi reset)(ansi yellow):(ansi magenta_bold)%S(ansi reset)"
+
+# Filesize settings
+$env.config.filesize.unit = "metric"
+$env.config.filesize.show_unit = true
+$env.config.filesize.precision = 1
+$env.config.float_precision = 2
+
+# Miscelaneus
+$env.config.ls.use_ls_colors = true
+
+# Hook configuration
+$env.config.hooks.pre_prompt = []
+
+$env.config.hooks.pre_execution = [
+  {||
+    commandline
+    | str trim
+    | if ($in | is-not-empty) { print $"(ansi title)($in) — nu(char bel)" }
+  }
+]
+
+$env.config.hooks.env_change = {}
+
+$env.config.hooks.display_output = {||
+  tee { table --expand | print }
+  # SQLiteDatabase doesn't support equality comparisions
+  | try { if $in != null { $env.last = $in } }
 }
 
-# Environment variables
+$env.config.hooks.command_not_found = []
 
-$env.TRANSIENT_PROMPT_COMMAND = null
-$env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
+# Helper functions
+def _ []: nothing -> any {
+  $env.last?
+}
+
+def nu-highlight-default [] {
+  let input = $in
+  $env.config.color_config = {}
+  $input | nu-highlight
+}
+
+def "nu-keybind commandline-copy" []: nothing -> nothing {
+  commandline
+  | nu-highlight-default
+  | [
+    "```ansi"
+    $in
+    "```"
+  ]
+  | str join (char nl)
+  | clip copy --ansi
+}
+
+$env.config.keybindings ++= [
+  {
+    name: copy_color_commandline
+    modifier: control_alt
+    keycode: char_c
+    mode: [ emacs vi_insert vi_normal ]
+    event: {
+      send: executehostcommand
+      cmd: 'nu-keybind commandline-copy'
+    }
+  }
+]
+
+$env.config.color_config.bool = {||
+  if $in {
+    "light_green_bold"
+  } else {
+    "light_red_bold"
+  }
+}
+
+$env.config.color_config.string = {||
+  if $in =~ "^(#|0x)[a-fA-F0-9]+$" {
+    $in | str replace "0x" "#"
+  } else {
+    "white"
+  }
+}
+
+$env.config.color_config.row_index = "light_yellow_bold"
+$env.config.color_config.header = "light_yellow_bold"
 
 # Source external configuration files
-
 source ~/.config/nushell/alias.nu
 source ~/.config/nushell/completions-jj.nu
 source ~/.zoxide.nu
 
 # Startup programs
-
 sleep 0.1sec
 fastfetch
 source $"($nu.home-path)/.cargo/env.nu"

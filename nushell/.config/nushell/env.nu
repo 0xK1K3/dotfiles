@@ -20,10 +20,13 @@
 # Initialize zoxide
 zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
 
+# System variables
+$env.TRANSIENT_PROMPT_COMMAND = null
+$env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
+
 # pnpm
 $env.PNPM_HOME = "/home/k1k3/.local/share/pnpm"
 $env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
-# pnpm end
 
 # Add ~/.local/bin to PATH for uv and other local binaries
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.local/bin" )
