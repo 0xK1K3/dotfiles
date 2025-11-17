@@ -23,28 +23,5 @@
       },
     },
   },
-  "mcp": {
-    "zai-mcp-server": {
-      "type": "local",
-      "command": ["npx", "-y", "@z_ai/mcp-server"],
-      "environment": {
-        "Z_AI_API_KEY": "{env:Z_AI_API_KEY}",
-        "Z_AI_MODE": "ZAI",
-      },
-    },
-    "web-search-prime": {
-      "type": "remote",
-      "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
-      "headers": {
-        "Authorization": "Bearer {env:Z_AI_API_KEY}",
-      },
-    },
-    "stripe-mcp-server": {
-      "type": "local",
-      "command": ["npx", "-y", "@stripe/mcp", "--tools=all"],
-      "environment": {
-        "STRIPE_SECRET_KEY": "{env:STRIPE_SECRET_KEY}",
-      },
-    },
-  },
+  "mcp": {},
 }
