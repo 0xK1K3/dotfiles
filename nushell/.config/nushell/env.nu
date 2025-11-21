@@ -35,6 +35,11 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.local/bi
 $env.ROCM_PATH = "/opt/rocm"
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.ROCM_PATH)/bin" )
 
+# Carapace
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+mkdir $"($nu.cache-dir)"
+carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
+
 # Z.AI API Key for MCP servers
 if ("~/.config/nushell/secrets.nu" | path exists) {
     source ~/.config/nushell/secrets.nu
