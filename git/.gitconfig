@@ -23,3 +23,5 @@
   date = relative
 [rerere]
 	enabled = true
+[pager]
+	log = less -F -X -R
