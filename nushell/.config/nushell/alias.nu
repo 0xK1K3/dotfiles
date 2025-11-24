@@ -10,6 +10,8 @@ alias ga = git add
 alias gs = git status
 alias gl = git log --graph --pretty=format:'%C(yellow)%h (%Creset%Cgreen%p%Creset%C(yellow))%Creset -%Cred%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --all
 alias lg = lazygit
+alias gd = git diff
+alias gds = git diff --staged
 
 def nfzf [] {
     try {
