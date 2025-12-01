@@ -16,12 +16,12 @@ next = ["ctrl j"]
 left = ["ctrl h"]
 right = ["ctrl l"]
 
+[columns]
+symbols = 1 # providers to be queried by default
+
 [providers]
-max_results = 256 # 256 should be enough for everyone
-default = [
-  "desktopapplications",
-  "websearch",
-] # providers to be queried by default
+max_results = 256                              # 256 should be enough for everyone
+default = ["desktopapplications", "websearch"]
 
 [[providers.prefixes]]
 prefix = "/"
