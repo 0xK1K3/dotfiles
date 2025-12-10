@@ -6,6 +6,7 @@ alias cat = bat
 
 # Git aliases
 alias gc = git commit
+alias gp = git push
 alias ga = git add
 alias gs = git status
 alias gl = git log --graph --pretty=format:'%C(yellow)%h (%Creset%Cgreen%p%Creset%C(yellow))%Creset -%Cred%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --all
